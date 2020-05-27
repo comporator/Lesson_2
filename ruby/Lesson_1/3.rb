@@ -1,34 +1,37 @@
 puts 'Введите первую сторону треугольника: '
-a = gets.chomp.to_f
+side_a = gets.chomp.to_f
 
 puts 'Введите вторую сторону треугольника: '
-b = gets.chomp.to_f
+side_b = gets.chomp.to_f
 
 puts 'Введите третью сторону треугольника: '
-c = gets.chomp.to_f
+side_c = gets.chomp.to_f
 
-short_side_1, short_side_2, long_side = [a, b, c].sort
+short_side_1, short_side_2, long_side = [side_a, side_b, side_c].sort
 
 long_side_squared = long_side**2
 short_sides_squared = short_side_1**2 + short_side_2**2
 
-if long_side_squared.round(2) == short_sides_squared.round(2)
-  right_triangle_marker = 'прямоугольный'
-else
-  right_triangle_marker = ''
-end
+right_triangle_marker =
+  if long_side_squared.round(2) == short_sides_squared.round(2)
+    'прямоугольный'
+  else
+    ''
+  end
 
-if a == b && a == c
-  equilateral_triangle_marker = 'равносторонний'
-else
-  equilateral_triangle_marker = ''
-end
+equilateral_triangle_marker =
+  if side_a == side_b && side_a == side_c
+    'равносторонний'
+  else
+    ''
+  end
 
-if a == b || a == c
-  isosceles_triangle_marker = 'равноравнобедренный'
-else
-  isosceles_triangle_marker = ''
-end
+isosceles_triangle_marker =
+  if side_a == side_b || side_a == side_c
+    'равноравнобедренный'
+  else
+    ''
+  end
 
 if right_triangle_marker.length > 0 && equilateral_triangle_marker.length > 0
   coma1 = ' и'
