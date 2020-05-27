@@ -1,53 +1,41 @@
-puts "Введите первую сторону треугольника: "
+puts 'Введите первую сторону треугольника: '
 a = gets.chomp.to_f
 
-puts "Введите вторую сторону треугольника: "
+puts 'Введите вторую сторону треугольника: '
 b = gets.chomp.to_f
 
-puts "Введите третью сторону треугольника: "
+puts 'Введите третью сторону треугольника: '
 c = gets.chomp.to_f
 
-if a>b
-  lng = a
-  shrt1 = b
-  shrt2 = c
-else 
-  lng = b
-  shrt1 = a
-  shrt2 = c  
-end  
-if lng < c 
-  lng = c
-  shrt1 = a
-  shrt2 = b      
-end	
-lngp = lng**2
-shrt = (shrt1**2) + (shrt2**2) 
+short_side_1, short_side_2, long_side = [a, b, c].sort
 
-if lngp.round(2) == shrt.round(2) 
-  prmg = "прямоугольный"
+long_side_squared = long_side**2
+short_sides_squared = short_side_1**2 + short_side_2**2
+
+if long_side_squared.round(2) == short_sides_squared.round(2)
+  right_triangle_marker = 'прямоугольный'
 else
-  prmg = ""	
+  right_triangle_marker = ''
 end
 
 if a == b && a == c
-  rst = "равносторонний"
-else 
-  rst = ""
+  equilateral_triangle_marker = 'равносторонний'
+else
+  equilateral_triangle_marker = ''
 end
 
 if a == b || a == c
-  rbd = "равноравнобедренный"
+  isosceles_triangle_marker = 'равноравнобедренный'
 else
-  rbd = ""  
+  isosceles_triangle_marker = ''
 end
 
-if prmg.length > 0 && rst.length > 0
-  coma1 = " и"
+if right_triangle_marker.length > 0 && equilateral_triangle_marker.length > 0
+  coma1 = ' и'
 end
 
-if (prmg.length > 0 && rbd.length > 0) || (rst.length > 0 && rbd.length > 0)
-  coma2 = " и"  
+if (right_triangle_marker.length > 0 && isosceles_triangle_marker.length > 0) || (equilateral_triangle_marker.length > 0 && isosceles_triangle_marker.length > 0)
+  coma2 = ' и'
 end
 
-puts "Треугольник #{prmg}#{coma1} #{rst}#{coma2} #{rbd}"
+puts "Треугольник #{right_triangle_marker}#{coma1} #{equilateral_triangle_marker}#{coma2} #{isosceles_triangle_marker}"
